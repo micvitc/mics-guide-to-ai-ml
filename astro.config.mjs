@@ -4,6 +4,7 @@ import starlight from '@astrojs/starlight';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://micvitc.github.io/mics-guide-to-ai-ml/',
+  base: '/mics-guide-to-ai-ml/',
   integrations: [starlight({
     title: 'Guide to AI/ML',
     logo: {
