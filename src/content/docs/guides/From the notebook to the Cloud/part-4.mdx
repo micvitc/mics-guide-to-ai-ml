@@ -2,6 +2,7 @@
 title: "Docker"
 ---
 
+import { Card, CardGrid , LinkCard} from '@astrojs/starlight/components';
 
 ## Docker
 
@@ -15,7 +16,7 @@ To solve this we'll use Docker. On the surface level just packages your applicat
 The process of building a docker container is quite simple.
 
 First install docker.
-<https://docs.docker.com/get-docker/>
+[https://docs.docker.com/get-docker](https://docs.docker.com/get-docker)
 
 Once installed. Run the docker daemon.
 
@@ -27,7 +28,7 @@ pip freeze -> requirements.txt
 
 Create a new file called Dockerfile in the main directory. Inside it add.
 
-~~~Dockerfile
+~~~
 FROM python:3.12.2-slim
 
 WORKDIR /code
@@ -45,13 +46,13 @@ CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
 
 In this file we configure the build. First we pull the base python image from the Dockerhub repository. Then we specify the working directory as /code. We copy the requirements.txt file from the host machine into the working directory.
 
-~~~Dockerfile
+~~~
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 ~~~
 
 Here the we install all the dependencies specified in requirements.txt.
 
-~~~Dockerfile
+~~~
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
 ~~~
 
@@ -84,11 +85,11 @@ docker run -d --name test -p 80:80 mic-practice
 
 Here we create a container called test from the image mic-practice and we map the port 80 of the host to the port 80 of the container. This way any requests sent to port 80 of the host will be forwarded to port of the container (where the app is running).
 
-Finally you should be able to access the app at <code>http://127.0.0.1:80/</code>
+Finally you should be able to access the app at [http://127.0.0.1:80](http://127.0.0.1:80)
 
 Before we move onto the next step, there is one last thing we must do.
 
-We have to upload our image to Dockerhub. This we can access it from anywhere. For this you need to create an account on <https://hub.docker.com/>
+We have to upload our image to Dockerhub. This we can access it from anywhere. For this you need to create an account on [https://hub.docker.com](https://hub.docker.com)
 
 First we have to change the name of our docker image to "username/image-name"
 
@@ -109,3 +110,7 @@ docker push norsu9011/mic-practice
 ~~~
 
 Now we are finally ready to jump into the cloud.
+
+<CardGrid>
+<LinkCard title="The Cloud" href="/mics-guide-to-ai-ml/guides/from-the-notebook-to-the-cloud/part-5/"/>
+</CardGrid>
