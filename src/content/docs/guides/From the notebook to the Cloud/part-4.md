@@ -1,6 +1,8 @@
 ---
 title: "Docker"
 ---
+
+
 ## Docker
 
 If you don't get anything out of this article, atleast I want you to get a decent idea of Docker. Docker on very basic level is supposed to prevent this problem.

@@ -2,6 +2,7 @@
 title: "The Cloud"
 ---
 
+
 ## The Cloud
 
 For this step we could have used any of the the big three AWS/Azure/GCP. On top of that there are several ways of running a container on the cloud. We'll stick with Azure. Mainly because Azure gives 100$ in free credits to students.
