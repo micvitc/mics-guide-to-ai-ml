@@ -1,0 +1,31 @@
+---
+title: MIC's Guide to AI/ML 
+description: Start your Machine Learning journey.
+tableOfContents: false
+hero:
+  tagline: Start your Machine Learning journey!
+  image:
+    file: ../../assets/computer.svg
+  actions:
+    - text: Overview
+      link: /starlight-ion-theme/features/
+      icon: right-arrow
+      variant: primary
+    - text: Github repo
+      link: https://github.com/micvitc/mics-guide-to-ai-ml
+      icon: external
+---
+
+import { Card, CardGrid , LinkCard} from '@astrojs/starlight/components';
+
+## Next steps
+
+<CardGrid>
+	<Card title="Guides" icon="pencil" href='/guides/'>
+		<LinkCard title='Beginner focused Guides'	href = '/guides/from-the-notebook-to-the-cloud/part-1/'/>
+	</Card>
+
+	<Card title="References" icon="open-book">
+	<LinkCard title = 'Reference material containing our favorite sources' href='/reference/ffcs/'/>
+	</Card>
+</CardGrid>
