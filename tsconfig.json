@@ -11,6 +11,6 @@
     "jsxImportSource": "react"
   }, "include": [
     "src",
-    "src/declaration.d.ts",
+    "src/declaration.d.ts", "index.d.ts",
   ]
 }
