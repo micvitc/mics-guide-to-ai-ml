@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Pytorch"
+title: "Introduction to PyTorch"
 ---
 
 import { Steps } from '@astrojs/starlight/components';
@@ -9,23 +9,23 @@ import { Steps } from '@astrojs/starlight/components';
 
 
 
-## Pytorch
+## PyTorch
 
-Pytorch is the most popular machine learning framework by a wide margin.
-And with good reason as it has much better support then Tensorflow. Even though Tensorflow has better portability, the solutions for Pytorch are actively being worked on.
-Basically if you want to do any Machine Learning work in the future you have to learn Pytorch.
+PyTorch is the most popular machine learning framework by a wide margin.
+And with good reason as it has much better support then Tensorflow. Even though Tensorflow has better portability, the solutions for PyTorch are actively being worked on.
+Basically if you want to do any Machine Learning work in the future you have to learn PyTorch.
 
-Before we begin with the general Overview of the main pillars of Pytorch, lets understand why we actually need Pytorch.
+Before we begin with the general Overview of the main pillars of PyTorch, lets understand why we actually need PyTorch.
 Very simply most of the operations in Deep Learning are parallelizable. Which means they can run much more efficiently on multi-core processors.
 A standard consumer grade CPU come with 4-8 cores, compare that to even simple RTX 3050 graphics card that comes with 2560 cores.
-However, for writing the code for them requires using CUDA which is quite difficult. This is exactly why Pytorch was developed.
-Not only this, Pytorch has several other optimizations specifically for Deep Learning.
+However, for writing the code for them requires using CUDA which is quite difficult. This is exactly why PyTorch was developed.
+Not only this, PyTorch has several other optimizations specifically for Deep Learning.
 
 ## Getting Started
 
-We will cover the fundamentals of Pytorch using a very simple example. The example we will use is the Iris flowers dataset, it is very popular dataset used for learning machine learning. Our task will be to predict the type of flower given its sepal/petal widths and lengths. It is a standard classification problem that is much better suited for classical Tree based algorithms like RandomForest. However, we will use a Neural Network for this task. 
+We will cover the fundamentals of PyTorch using a very simple example. The example we will use is the Iris flowers dataset, it is very popular dataset used for learning machine learning. Our task will be to predict the type of flower given its sepal/petal widths and lengths. It is a standard classification problem that is much better suited for classical Tree based algorithms like RandomForest. However, we will use a Neural Network for this task. 
 
-Even though using a Neural Network for this task is overkill, the simplicity of the Iris dataset allows us to focus completely on the Pytorch workflow rather than worrying about the data. Don't worry we will do that in the next part :)
+Even though using a Neural Network for this task is overkill, the simplicity of the Iris dataset allows us to focus completely on the PyTorch workflow rather than worrying about the data. Don't worry we will do that in the next part :)
 
 To keep it simple we will use Google Colab. So lets begin!
 
@@ -72,9 +72,9 @@ sns.pairplot(hue='Species', data=data, palette='Set1')
 
 We can see that the flowers are best differentiated by the Petal width and Length, for Sepal width/length its a little unclear. Anyways EDA is not the point of this tutorial so lets get back to loading the data.
 
-Some of the most confusing parts of Pytorch initially is the way it handles data. 
+Some of the most confusing parts of PyTorch initially is the way it handles data. 
 
-There are two main abstractions related to data in Pytorch. First we have the Dataset class, it is used to load and perform transformations on the raw data. Second we have the DataLoader Class used to load data into memory.
+There are two main abstractions related to data in PyTorch. First we have the Dataset class, it is used to load and perform transformations on the raw data. Second we have the DataLoader Class used to load data into memory.
 
 Lets explore them further.
 
@@ -82,9 +82,9 @@ Often the data we have cannot be directly used to train the model we will need t
 
 Next we come to the DataLoader. If the data is small enough we can simply pass it as a single batch. However in real world use cases the datasets are much larger and need to be loaded in batches (as we will see in the next part). DataLoaders allow for simple way to split the dataset into batches, shuffle and pass them to the model for training.
 
-Even though for this example both creating a Dataset and DataLoader is unnecessary we will still create them for understanding the Pytorch workflow.
+Even though for this example both creating a Dataset and DataLoader is unnecessary we will still create them for understanding the PyTorch workflow.
 
-Before we get to that lets learn a little about how data is represented in Pytorch. 
+Before we get to that lets learn a little about how data is represented in PyTorch. 
 
 ### Tensors
 
@@ -208,7 +208,7 @@ Nice! we have 10 random examples from the training set, here each row at the top
 
 ## Designing the Model
 
-Every model in Pytorch consists of layers that are combined together to form complex architectures. All these layers are in nn.Module. To create a Neural Network we have to subclass nn.Module and include two methods, init and forward.
+Every model in PyTorch consists of layers that are combined together to form complex architectures. All these layers are in nn.Module. To create a Neural Network we have to subclass nn.Module and include two methods, init and forward.
 
 ```python
 import torch.nn as nn
@@ -338,14 +338,14 @@ We extract a single batch of features and corresponding targets from the dataloa
     optimizer.step()
 ```
 
-This is the main core of the Neural Network training in Pytorch. Well not just Pytorch, this is simply how Neural Networks learn.
+This is the main core of the Neural Network training in PyTorch. Well not just PyTorch, this is simply how Neural Networks learn.
 
 <Steps>
 1. A batch of input features are passed through the model and stored. (`pred = model(feat)`)
 2. The loss is calculated on the outputs generated using the loss function we defined before. (`loss = loss_fn(pred, target)`)
 3. The loss is then backpropogated through the network and the gradients are updated. (`loss.backward()`)
 4. Based on the gradients the optimizer updates the values of the model parameters. (`optimizer.step()`)
-5. There is another step, `optimizer.zero_grad()`, this is used to clean any accumulated gradients from previous steps as Pytorch doesn't do it automatically.
+5. There is another step, `optimizer.zero_grad()`, this is used to clean any accumulated gradients from previous steps as PyTorch doesn't do it automatically.
 </Steps>
 
 ```python
